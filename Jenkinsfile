@@ -22,13 +22,13 @@ pipeline{
     }
     
     post{
-         Success {
+         success {
              mail to: 'fmfelbohemia@gmail.com',
              subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Your build completed successfully "
     
          }
-         Failure{
+         failure{
            
            mail to: 'fmfelbohemia@gmail.com',
              subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
