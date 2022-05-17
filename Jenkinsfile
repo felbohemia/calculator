@@ -19,4 +19,13 @@ pipeline{
           }
        }
     }
+    
+    post{
+        always {
+             mail to: 'fmfelbohemia@gmail.com',
+             subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Your build completed, please check: ${env.BUILD_URL}"
+    
+        } 
+     }
 }
