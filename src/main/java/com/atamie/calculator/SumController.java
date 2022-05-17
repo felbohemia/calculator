@@ -14,4 +14,12 @@ public class SumController {
     public String getSum(@RequestParam("a") int a, @RequestParam("b") int b){
         return String.valueOf(sum.sum(a,b));
     }
+    @RequestMapping("/subtract")
+    public  String getDifference(@RequestParam("a") int a, @RequestParam("b") int b){
+        return String.valueOf(sum.subtract(a,b));
+    }
+    @RequestMapping("/multiply")
+    public String getProduct(@RequestParam("a") int a, @RequestParam("b") int b){
+        return  String.valueOf(sum.multiply(a,b));
+    }
 }

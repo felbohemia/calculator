@@ -12,5 +12,15 @@ class CalculatorApplicationTests {
 		Sum sum = new Sum();
 		assertEquals(5,sum.sum(2,3));
 	}
+	@Test
+	void testSubtract(){
+		Sum sum = new Sum();
+		assertEquals(1, sum.subtract(3,2));
+	}
+	@Test
+	void testMultiply(){
+		Sum sum = new Sum();
+		assertEquals(6, sum.multiply(2,3));
+	}
 
 }
