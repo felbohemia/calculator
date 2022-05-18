@@ -13,9 +13,10 @@ pipeline{
                 sh "./mvnw compile"
             }
         }
+        
         stage("Unit test"){
             steps{
-                sh "./mvnw test"
+                sh "./mvnw test -e"
             }
         }
         
@@ -29,7 +30,6 @@ pipeline{
              sh "./mvnw package" 
           }        
        }
-       
        stage("Docker build"){
           steps{
              script{
@@ -47,7 +47,6 @@ pipeline{
           }        
        }
     }
-    
     post{
          success {
              mail to: 'fmfelbohemia@gmail.com',
