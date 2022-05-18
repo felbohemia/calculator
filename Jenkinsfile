@@ -13,7 +13,11 @@ pipeline{
                 sh "./mvnw compile"
             }
         }
-        
+        stage("Clean install"){
+           steps{
+              sh "./mvnw clean install"
+           }
+        }
         stage("Unit test"){
             steps{
                 sh "./mvnw test -e"
