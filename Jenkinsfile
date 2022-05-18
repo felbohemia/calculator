@@ -1,4 +1,9 @@
 pipeline{
+    environment{
+      registry = "felbohemia/braintrainer"
+      registryCredential = 'dockerhub_id'
+      dockerImage = ''
+    }
     agent any
     triggers {pollSCM('* * * * *')}
     stages{
@@ -18,6 +23,27 @@ pipeline{
         steps {
              sh "./mvnw verify"     
           }
+       }
+       stage("Package"){
+          steps{
+             sh "./mvnw package" 
+          }        
+       }
+       stage("Docker build"){
+          steps{
+             script{
+               dockerImage = docker.build registry + "$BUILD_NUMBER"
+             }
+          }        
+       }
+       stage("Docker push"){
+          steps{
+             script{
+               docker.withRegistry('', registryCredential){
+                dockerImage.push()
+               }
+             }
+          }        
        }
     }
     
