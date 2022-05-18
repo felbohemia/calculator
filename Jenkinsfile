@@ -18,21 +18,11 @@ pipeline{
               sh "./mvnw clean install"
            }
         }
-        stage("Unit test"){
-            steps{
-                sh "./mvnw test -e"
-            }
-        }
         
        stage("Code coverage") {
         steps {
              sh "./mvnw verify"     
           }
-       }
-       stage("Package"){
-          steps{
-             sh "./mvnw package" 
-          }        
        }
        stage("Docker build"){
           steps{
